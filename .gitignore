@@ -356,3 +356,5 @@ Release/NuGetBuild
 #Misc
 *.map
 *.min.*
+**/\.tye
+

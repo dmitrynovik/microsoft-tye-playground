@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using frontend;
 
 namespace frontend.Pages
 {
@@ -17,9 +18,11 @@ namespace frontend.Pages
             _logger = logger;
         }
 
-        public void OnGet()
-        {
+        public WeatherForecast[] Forecasts { get; set; }
 
+        public async Task OnGet([FromServices]WeatherClient client)
+        {
+            Forecasts = await client.GetWeatherAsync();
         }
     }
 }
